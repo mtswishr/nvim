@@ -15,3 +15,5 @@ require('telescope').setup {
 }
 
 vim.api.nvim_set_keymap('n', '<leader>ff', '<cmd>Telescope find_files<cr>',{})
+vim.api.nvim_set_keymap('n', '<leader>fg', '<cmd>Telescope live_grep<cr>', {})
+vim.api.nvim_set_keymap('n', '<leader>fr', '<cmd>Telescope lsp_references<cr>', {}) 

@@ -20,7 +20,7 @@ packer.startup(function(use)
 
   use 'wbthomason/packer.nvim'
   use 'nvim-treesitter/nvim-treesitter'
-  use 'morhetz/gruvbox'
+  use 'folke/tokyonight.nvim'
   use 'kyazdani42/nvim-web-devicons' 
   use 'nvim-lua/plenary.nvim'
   use "BurntSushi/ripgrep"
@@ -29,7 +29,7 @@ packer.startup(function(use)
   use 'hrsh7th/cmp-nvim-lsp'
   use 'hrsh7th/cmp-cmdline'
   use 'onsails/lspkind-nvim'
-  use 'ray-x/go.nvim'
+  use { 'sbdchd/neoformat' }
 
   use {
 	  'nvim-lualine/lualine.nvim',
@@ -43,7 +43,8 @@ packer.startup(function(use)
   }
 
   use {
-	  'nvim-telescope/telescope.nvim',
+	  'nvim-telescope/telescope.nvim', 
+    tag = '0.1.0',
 	  requires = { {'nvim-lua/plenary.nvim'} } ,
 	  config = [[ require('config.telescope') ]]
   }
