@@ -5,7 +5,6 @@ wo = vim.wo
 
 -- Space is the only true leader key
 vim.g.mapleader = ' '
-vim.g["neoformat_try_node_exe"] = 1
 
 o.guicursor=""
 
@@ -29,21 +28,27 @@ wo.number = true
 wo.relativenumber = true
 wo.wrap = false
 
+
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not vim.loop.fs_stat(lazypath) then
+  vim.fn.system({
+    "git",
+    "clone",
+    "--filter=blob:none",
+    "https://github.com/folke/lazy.nvim.git",
+    "--branch=stable", -- latest stable release
+    lazypath,
+  })
+end
+vim.opt.rtp:prepend(lazypath)
+
+require("lazy").setup("plugins")
 -- I can never decide on a colorscheme
-vim.cmd('colorscheme tokyonight')
+vim.cmd('colorscheme onedark')
 vim.cmd('highlight Normal guibg=none')
 vim.cmd('highlight NonText guibg=none')
+vim.cmd('highlight EndOfBuffer guibg=none')
 vim.cmd('let g:netrw_liststyle=3')
 vim.cmd('let g:netrw_banner=0')
 vim.cmd('let g:netrw_browse_split=0')
 vim.cmd('let g:netrw_winsize=25')
-
-
-
--- Get plugins!
-require('plugins')
--- Run gofmt + goimport on save
-vim.api.nvim_exec([[ autocmd BufWritePre *.go :silent! lua vim.lsp.buf.formatting() ]], false)
---Eslint on save for javascript
-vim.api.nvim_exec([[ autocmd BufEnter *.tsx :setlocal filetype=typescript.tsx]] , false)
-vim.api.nvim_exec([[ autocmd BufWritePre *.tsx :silent! Neoformat ]], false)
