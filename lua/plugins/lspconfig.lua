@@ -4,6 +4,26 @@ return {
                 require('lspconfig')
                 local signs = { Error = "" , Warn = "!", Hint = "", Info = "כֿ" }
 
+                vim.cmd [[autocmd! ColorScheme * highlight NormalFloat guibg=#1f2335]]
+                vim.cmd [[autocmd! ColorScheme * highlight FloatBorder guifg=white guibg=#1f2335]]
+
+                local border = {
+                      {"🭽", "FloatBorder"},
+                      {"▔", "FloatBorder"},
+                      {"🭾", "FloatBorder"},
+                      {"▕", "FloatBorder"},
+                      {"🭿", "FloatBorder"},
+                      {"▁", "FloatBorder"},
+                      {"🭼", "FloatBorder"},
+                      {"▏", "FloatBorder"},
+                }
+
+                -- LSP settings (for overriding per client)
+                local handlers =  {
+                  ["textDocument/hover"] =  vim.lsp.with(vim.lsp.handlers.hover, {border = border}),
+                  ["textDocument/signatureHelp"] =  vim.lsp.with(vim.lsp.handlers.signature_help, {border = border }),
+                }
+
                 for type, icon in pairs(signs) do 
                         local hl = "DiagnosticSign" .. type
                         vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -21,10 +41,10 @@ return {
                 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
                 vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
 
-                require'lspconfig'.pylsp.setup{ on_attach=on_attach }
-                require'lspconfig'.clangd.setup{ on_attach=on_attach }
-                require'lspconfig'.gopls.setup{ on_attach=on_attach }
-                require'lspconfig'.rust_analyzer.setup{ on_attach=on_attach }
-                require'lspconfig'.tsserver.setup{ on_attach=on_attach }
+                require'lspconfig'.pylsp.setup{ on_attach=on_attach, handlers=handlers }
+                require'lspconfig'.clangd.setup{ on_attach=on_attach, handlers=handlers }
+                require'lspconfig'.gopls.setup{ on_attach=on_attach, handlers=handlers}
+                require'lspconfig'.rust_analyzer.setup{ on_attach=on_attach, handlers=handlers }
+                require'lspconfig'.tsserver.setup{ on_attach=on_attach, handlers=handlers }
         end
 }

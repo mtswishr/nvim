@@ -44,7 +44,8 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 -- I can never decide on a colorscheme
-vim.cmd('colorscheme onedark')
+vim.cmd('colorscheme material')
+
 vim.cmd('highlight Normal guibg=none')
 vim.cmd('highlight NonText guibg=none')
 vim.cmd('highlight EndOfBuffer guibg=none')
