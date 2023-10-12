@@ -36,6 +36,7 @@ return {
                         vim.api.nvim_buf_set_keymap(bufnr, 'n', '<leader>d', '<cmd>lua vim.diagnostic.open_float()<CR>', opts)
                 end
 
+                
                 vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
                 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
                 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
