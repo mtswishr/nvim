@@ -44,11 +44,9 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup("plugins")
 -- I can never decide on a colorscheme
-vim.cmd('colorscheme material')
+vim.g.material_style = "darker"
+vim.cmd 'colorscheme material'
 
-vim.cmd('highlight Normal guibg=none')
-vim.cmd('highlight NonText guibg=none')
-vim.cmd('highlight EndOfBuffer guibg=none')
 vim.cmd('let g:netrw_liststyle=3')
 vim.cmd('let g:netrw_banner=0')
 vim.cmd('let g:netrw_browse_split=0')
