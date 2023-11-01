@@ -40,7 +40,7 @@ return {
                 vim.api.nvim_set_option('omnifunc', 'v:lua.vim.lsp.omnifunc')
                 vim.api.nvim_set_keymap('n', '[d', '<cmd>lua vim.diagnostic.goto_prev()<CR>', opts)
                 vim.api.nvim_set_keymap('n', ']d', '<cmd>lua vim.diagnostic.goto_next()<CR>', opts)
-                vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.set_loclist()<CR>', opts)
+                vim.api.nvim_set_keymap('n', '<leader>q', '<cmd>lua vim.diagnostic.setloclist()<CR>', opts)
 
                 require'lspconfig'.pylsp.setup{ on_attach=on_attach, handlers=handlers }
                 require'lspconfig'.clangd.setup{ on_attach=on_attach, handlers=handlers }
