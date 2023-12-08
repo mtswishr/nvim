@@ -45,7 +45,7 @@ vim.opt.rtp:prepend(lazypath)
 require("lazy").setup("plugins")
 -- I can never decide on a colorscheme
 vim.g.material_style = "darker"
-vim.cmd 'colorscheme material'
+vim.cmd 'colorscheme rose-pine'
 
 vim.cmd('let g:netrw_liststyle=3')
 vim.cmd('let g:netrw_banner=0')
