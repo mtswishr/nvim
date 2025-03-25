@@ -1,6 +1,6 @@
 return {
-    'ellisonleao/gruvbox.nvim',
-    lazy = false,
-    priority = 1000,
-    config = true
+  'craftzdog/solarized-osaka.nvim',
+  lazy = false,
+  priority = 1000,
+  opts = {},
 }
